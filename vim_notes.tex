@@ -1,0 +1,829 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{hyperref}
+\usepackage{alltt}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{float}
+\restylefloat{table}
+\title{Vim Start to End}
+\author{Projit Bandyopadhyay}
+\begin{document} \maketitle 
+
+
+\section{Why Vim is Awesome}
+\textit{No one knows how to start}
+
+So the sad part is that most online tutorials on vim focus only on the absolute basics of vim, and not why vim is awesome. To a beginner it looks scary as $$:wq$$ and $$dd$$ are not exactly the most intuitive things in vim. If you're reading this document, I assume you probably know those already, and are actually looking to figure out why people rave about vim, and what the true power of this "text editor" is.
+
+The philosophy behind vim is quite awesome as well. The idea is that we spend more time \textit{editing} code rather than acutally writing it. So vim is configured and geared towards making that process easy. Moving things around, making quick changes, and basically everything else under the sun (of editing), is what vim is made for.
+
+Vim has an insane amount of funtionality in-built without any plugins whatsoever. Hopefully reading this will show you that, and help you appreciate how useless most plugins are xD, and how awesome vim is out-of-the-box.
+
+
+\section{Basic Basics}
+This section has been added to include all commonly use commands. You don't need to read this part too well, but it's included for the sake of completion. Skim through it maybe, to see useful shortcuts here and there.
+
+\subsection{Modes}
+3 Modes in Vim: Insert, Normal, Visual
+
+When you first open Vim (vim <somedocument>) you are in Normal Mode. This is the mode that you will stay in to edit.
+
+\begin{table}[H]
+    \begin{tabular}{|c|c|}
+        Normal to Insert & i \\
+
+        Insert to Normal & Esc \\
+
+        Normal to Visual & v, Ctrl v, V \\
+
+        Visual to Normal & Esc \\
+    \end{tabular}
+\end{table}
+
+Basically if you're confused and don't know what's going on press \textit{Esc} repeatedly till it goes back to normal :)
+
+
+Little more on Visual:
+
+\begin{table}[H]
+    \begin{tabular}{|c|c|}
+        Command & Description \\
+        \hline
+        v & enter visual mode, then can move around with navigation. \\
+        V & enter visual line mode, then can move around up and down \\
+        Ctrl V& enter visual block mode, can move around with navigation \\
+    \end{tabular}
+\end{table}
+
+
+
+\subsection{Navigation}
+You never want to be navigating around in insert mode, always use normal mode to move around (you'll see why later)
+
+In Normal Mode:
+
+\begin{table}[H]
+    \begin{tabular}{|c|p{9cm}|}
+        Command & Description \\
+        \hline
+        j & down one line \\
+        \hline
+        k & up one line \\
+        \hline
+
+        h : &eft one character \\
+        \hline
+
+        l & right one character \\
+        \hline
+
+        0 & start of the line \\
+        \hline
+
+        \$ & end of the line \\
+        \hline
+
+        w & move to beginning of next (w)ord \\
+        \hline
+
+        W & move to beginning of next (w)ord after a whitespace \\
+        \hline
+
+        b & move to (b)ackward to beginning of word  \\
+        \hline
+
+        B & move (b)ackward by word to next whitespace \\
+        \hline
+
+        e & move to (e)nd of word \\
+        \hline
+
+        E & move to (e)nd of word til whitespace \\
+        \hline
+
+        G & move to end of the file \\
+        \hline
+
+        gg & move to start of the file \\
+        \hline
+
+        Ctrl u & move half screen (u)p \\
+        \hline
+
+        Ctrl d & move half screen (d)own \\
+        \hline
+
+        Ctrl e & scroll downwards without moving cursor \\
+        \hline
+
+        Ctrl y & scroll upwards without moving cursor \\
+        \hline
+
+        zt & move current line (t)op of screen \\
+        \hline
+
+        zb & move current line (b)ottom of screen \\
+        \hline
+
+        zz & move current line center of screen \\
+        \hline
+
+        \char`\^ & move to first non whitespace character in line (useful while coding) \\
+        \hline
+
+        `. & move to last edit point \\
+        \hline
+
+        f<char> & move (f)orward to first character in that line which matches that character \\
+        \hline
+
+        F<char> & move backward to first character in that line which matches that character \\
+        \hline
+
+        t<char> & move forward (t)il first character in that line which matches that character,\newline but stop one character before \\
+        \hline
+
+        T<char> & move backward (t)il first character in that line which matches that character,\newline but stop one character in front \\
+        \hline
+
+        /text & searches forward for text in doc. \textit{n} and \textit{N} to navigate \\
+        \hline
+
+        ?text & searches backward for text in doc. \textit{n} and \textit{N} to navigate \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Editing}
+Some commands to be used while editing in vim, these will make more sense after the next section, but for the sake of some basic editing skills.
+\textbf{These will be greatly increased with the next section}
+
+Note: All of these take a little bit of practice to get use to their full functionality
+
+These all only work in Normal mode:
+
+\begin{table}[H]
+    \begin{tabular}{|c|p{9cm}|}
+        Command & Description \\
+        \hline
+        i & enter insert mode at current position \\
+        \hline \\
+        I & enter insert mode at start of line \\
+        \hline
+        a & enter insert mode one character in front of cursor \\
+        \hline
+        A & enter insert mode at the end of the line \\
+        \hline
+        dd & delete current line \\
+        \hline
+        d\$ & delete current point til end of line \\
+        \hline
+        yy & yank current line \\
+        \hline
+        p & paste from current point \\
+        \hline
+        P & paste before this point \\
+        \hline
+        x & delete character under cursor \\
+        \hline
+        rA & replace character under cursor with A (change A) \\
+        \hline
+        u & undo last change \\
+        \hline
+        Ctrl r & redo  \\
+        \hline
+        \textit{.} & repeat last change made  \\
+        \hline
+        :w & save file \\
+        \hline
+        :q & quite file \\
+        \hline
+        :q! & quite with force (discard changes) \\
+        \hline
+        :wq & save and quit \\
+        \hline
+    \end{tabular}
+\end{table}
+
+When using vim from a terminal, a common workflow is to type :w and then Ctrl z.
+
+After executing whatever needs to be done on the terminal, use fg to come back into vim. This retains your position and other buffers / splits you may have created
+
+\subsection{Fancy}
+You see other "cool" people using fancy splits and stuff. here are the basics on how to use those.
+
+
+\begin{table}[H]
+    \begin{tabular}{|c|p{9cm}|}
+        Command & Description \\
+        \hline
+        :vs <file?> & (v)ertical (s)plit current window. Add file to open that file as well \\
+        \hline
+        :sp <file?> & horizontal (sp)lit current window. Add file to open that file as well \\
+        \hline
+        <ctrl w> & use j,k,l,h along with this to move in that direction, to navigate splits \\
+        \hline
+        <ctrl w> <ctrl w> & cycle through windows \\
+        \hline
+        :q & close split you're in right now \\
+        \hline
+        :only & close all other splits but current \\
+        \hline
+        :set scrollbind & do this in each of the windows if you want them to scroll together (useful when comparing code) \\
+        \hline
+        <ctrl w> [N] - & Decrease current window height by N (default 1) \\
+        \hline
+        <ctrl w> [N] + & Increase current window height by N (default 1) \\
+        \hline
+        <ctrl w> [N] < & Decrease current window width by N (default 1) \\
+        \hline
+        <ctrl w> [N] > & Increase current window width by N (default 1) \\
+        \hline
+        <ctrl w> & maximize current window vertically \\
+        \hline
+        <ctrl w> | & maximize current window horizontally \\
+        \hline
+        <ctrl w> = & make all equal size \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+Buffers in vim are awesome though learning to use them can be a bit unintuitive. People are always like where did that file disappear to when I opened this new file with :e or something.
+
+What's interesting is that internally, splits and even tabs are essentially buffers. All that changes is how you view them.
+
+\begin{table}[H]
+    \begin{tabular}{|c|p{9cm}|}
+        Command & Description \\
+        \hline
+        :ls & list all buffers \\
+        \hline
+        :e filename & can tab-complete the filename, but opens the file in current buffer making your other file "disappear". :ls to see that it's still there. \\
+        \hline
+        :q & quits out of vim, AND all buffers. Can be used to close current split \\
+        \hline
+        :bn & navigate to (n)ext buffer \\
+        \hline
+        :bp & navigate to (p)revious buffer \\
+        \hline
+        :b<num> & navigate to buffer number <num> \\
+        \hline
+        :b<partial> & navigate to buffer with name where partial is a substring \\
+        \hline
+        :bd & delete current buffer; fails if unsaved. add ! to override \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+Let's say you've come from sublime or something, and just can't live without tabs. Well that's there too... (I don't use tabs very much so credits to \url{https://vim.fandom.com/wiki/Using_tab_pages} for the info, and sorry if anything important is missing)
+
+\begin{table}[H]
+    \begin{tabular}{|c|p{9cm}|}
+        Command & Description \\
+        \hline
+        :tabs & list all tabs including their displayed windows \\
+        \hline
+        :tabm 0 & move current tab to first \\
+        \hline
+        :tabm & move current tab to last \\
+        \hline
+        :tabm {i} & move current tab to position i+1 \\
+        \hline
+        :tabn & go to next tab \\
+        \hline
+        :tabp & go to previous tab \\
+        \hline
+        :tabfirst & go to first tab \\
+        \hline
+        :tablast & go to last tab \\
+        \hline
+        gt & go to next tab \\
+        \hline
+        gT & go to previous tab \\
+        \hline
+        {i}gt & go to tab in position i \\
+        \hline
+        :tab split & copy the current window to a new tab of its own \\
+        \hline
+        :tabedit {file} & edit specified file in a new tab \\
+        \hline
+        :tabfind {file} & open a new tab with filename given, searching the 'path' to find it \\
+        \hline
+        :tabclose & close current tab \\
+        \hline
+        :tabclose {i} & close i-th tab \\
+        \hline
+        :tabonly & close all other tabs (show only the current tab) \\
+        \hline
+        :tab split & copy the current window to a new tab of its own \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Congrats! You now know enough vim to impress your friends and think you're proficient at it. The beauty in a tool isn't learning how to use the basics of it though. Hopefully you read on :)
+
+
+\section{Vim as a Composable Tool}
+\textit{What are Commands?}
+
+Everything from inserting text, to the command "commands" that we execute are considered commands. How can you tell?
+
+Try typing something in insert mode and then press Esc. If you type a \textit{.} now, you'll see that it repeats
+
+The \textit{.} operator repeats your last command. 
+
+Therefore the undo and redo actions just go through the commands issued...no magic in why "random" chunks of text disappear when you press undo.
+
+To vim, entering insert mode and then typing is one command on the whole....which begs the question...what are commands?
+
+\subsection{Commands, the heart of Vim}
+Simply put (and this is my own take, so please don't kill me if it isn't exact :) ), a command comprises a \textit{noun} and a \textit{verb}.
+
+Ex. in \textit{dw} the verb is [d] while the noun is [w].
+
+Thus to create any command in vim, all you need to know is to learn what the nouns are, and what the verbs are. And this is the crux of the beauty of the design of vim. If you know 5 nouns and 5 verbs..you can create 25 commands. And the fun thing about vim is that the nouns and verbs are extremely intuitive.
+
+Thus the "right" way to use vim is to first think about the action you want to do, and then formulate the command for it based on your need.
+
+So when you type in a verb you'll notice that vim kind of "waits", for you to input the noun. It then takes the verb and applies it onto that noun.
+
+In proper vim jargon, these commands are created by:
+$$\{operator\}\{motion\}$$
+
+\subsection{Operators}
+
+\begin{table}[H]
+    \begin{tabular}{|c|p{9cm}|}
+        Popular Operators & Description \\
+        \hline
+        d & (d)elete \\
+        \hline
+        c & (c)hange (delete and go to insert mode) \\
+        \hline
+        > & right shift (indent) \\
+        \hline
+        < & left shift (un-indent) \\
+        \hline
+        v & (v)isually select \\
+        \hline
+        y & (y)ank \\
+        \hline
+        p & (p)ut (paste) after cursor. Not an operator in the conventional sense but still added here .\\
+        \hline
+        g\char`\~ & toggle case (tildy looks like a wave going up and down) \\
+        \hline
+        gu & lower case \\
+        \hline
+        gU & (U)pper case \\
+        \hline
+        = & format code \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Some comments on the operators:
+\begin{itemize}
+    \item As a regular vim user, you may actually be aware of all of these operators, having seen them as part of some of the basic commands. There exist more, but these are the commonly used ones.
+    \item doubling an operator makes it operate on a whole line (ex. dd, cc, yy, gUU, guu). This isn't applicable to all the operators though
+    \item Capitalizing an operator makes it do a "bolder" version of what it does now. A bit unpredictable, but not necessary once we se the motions. \\
+    \item i (insert), a (append), I (insert start of line), A (append at end of line) are also operators. Though we normall only use them in going to insert mode from normal mode, they can be applied on text objects(try using visual box and move down a few lines, then press I, type something and press Esc.)
+        \begin{table}[H]
+            \begin{tabular}{c|l}
+                D & deletes til end of line \\
+                C & changes til end of line \\
+                Y & copies line \\
+                P & Pastes before cursor
+            \end{tabular}
+        \end{table}
+\end{itemize}
+
+
+\subsection{Motions and More}
+The "noun" part of the command construct can be quite nuanced. There are of course easy nouns, and a little more complicated nouns.
+\begin{table}[H]
+    \begin{tabular}{|c|l|}
+        Motion & Description \\
+        \hline
+        h,j,k,l & left, down, up, right \\
+        \hline
+        w,W & to start of next word or WORD \\
+        \hline
+        b,B & to start of previous word or WORD \\
+        \hline
+        e,E & to end of word or WORD \\
+        \hline
+        \$ & to end of line \\
+        \hline
+        \char`\^ & to first non-empty character in line \\
+        \hline
+        G & end of document \\
+        \hline
+        gg & start of document \\
+        \hline
+        f<char> & til (and including) <char> \\
+        \hline
+        t<char> & til <char> \\
+        \hline
+        /text & til text forwards \\
+        \hline
+        ?text & til text backwards \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Each of the operators can also take a count before them, to increase their effectiveness.
+$$\{count\}\{motion\}$$
+While count can't be applied to all motions, it can to many.
+
+Examples:
+\begin{itemize}
+    \item \begin{verbatim} d2j \end{verbatim}- delete 2 lines (current and below)
+    \item \begin{verbatim} c2w \end{verbatim}- change 2 words 
+    \item \begin{verbatim} 3k \end{verbatim}- move up 3 lines
+    \item \begin{verbatim} 7l \end{verbatim}- move right 7 characters
+\end{itemize}
+
+So these motions can be used by itself to navigate the document while in normal mode. But coupled with an operator you can do cool things.
+
+
+\begin{itemize}
+    \item \begin{verbatim} df" \end{verbatim} - delete til and including " 
+    \item \begin{verbatim} c/goal<CR> \end{verbatim} -  This would change everything til the word goal. <CR> is carriage return, which is just press enter. 
+    \item d2w - delete 2 words
+\end{itemize}
+
+\subsection{Text Objects}
+Here comes the holy grail of this class of things. \textbf{Text Objects}
+
+For the sake of simplicity of understanding, let's say text objects can be the count + motion or this other class that we're about to describe.
+
+A little more intuitively however, motions can basically move you around as well, while text objects are just defined without any particular movement as well
+
+
+Take a look at two main modifiers:
+\begin{itemize}
+    \item \begin{verbatim} i \end{verbatim} - inner 
+    \item \begin{verbatim} a \end{verbatim} - around
+\end{itemize}
+These are sometimes called modifiers, which are added to other motions/objects.
+
+Plugins can be used to create new objects on which these could be applied...check it out :)
+
+For now, look at the awesome objects that you have access to with these
+\begin{table}[H]
+    \begin{tabular}{|c|l|}
+        Text Object & Description \\
+        \hline
+        iw & inner word \\
+        \hline
+        it & inner tag (between <tag>text</tag>) \\
+        \hline
+        i" & inner quotes \\
+        \hline
+        i' & inner quotes \\
+        \hline
+        ip & inner paragraph \\
+        \hline
+        aw & around word \\
+        \hline
+        as & around sentence \\
+        \hline
+        a' & around quotes (including the quotes essentially) \\
+        \hline
+    \end{tabular}
+\end{table}
+
+You can essentially do inner <anything> and around <anything>
+try:
+\begin{itemize}
+    \item \begin{verbatim} i\{ \end{verbatim}
+    \item \begin{verbatim} i< \end{verbatim}
+    \item \begin{verbatim} i>  (same results as previous) \end{verbatim}
+\end{itemize}
+
+You've probably understood that i and a can be used on pretty much all the same things. i usually implies inside and not anything else. a usually implies that the object's surroundings or the object specified itself is included. 
+
+Try them out to actually get the hang of them...but they're truly awesome.
+
+So now for some truly magical stuff try combining
+$$\{operator\}\{text object\}$$
+Examples: 
+\begin{itemize}
+    \item \begin{verbatim} ciw \end{verbatim}
+    \item \begin{verbatim} ci" \end{verbatim}
+    \item \begin{verbatim} di) \end{verbatim}
+\end{itemize}
+
+The possiblities are endless :)
+
+As mentioned before, research online on how to add in more text objects as well
+
+\subsection{Summary Thus Far}
+
+We've now seen that Vim is ridiculously composable. Wanna delete and replace a word? ciw. Your cursor could be anywhere on the object and it works!
+
+You know what's even better? try ciw and then type something. Then go to another word and press \textit{.}
+
+It'll do the same operation?! Cause change puts us into insert mode, it kind of chains the command til the completion of that. 
+
+We've seen that any command can be created from just operators (verbs) and objects / motions (nouns). 
+
+Learning a few operators and a few objects allows you to compose them to do tons of stuff. Hope you've started to appreciate the beauty that is vim. Now what's the fun if you can't customize it?
+
+\section{How to Customize}
+\subsection{The Horror that is Vimscript}
+So, vimscript sucks. Sure you could use other versions of vim that don't require this, so skip this part if you want.
+
+But inevitably you may be forced to an unconfigured vim at some point, so the knowledge isn't half bad.
+
+For better of for worse, vimscript is actually a full blown programming language. But for most of your daily vim needs, you probably don't need to know the whole of it. 
+
+So think of this as a minimal introduction to vimscript, with some barebones so that many operations don't look foreign, especially when editing your .vimrc (a file which can store settings and configurations)
+
+\textbf{:help} is your best friend. Anything and everything you don't understand just do :help <query> and boom. It's surprisingly well written documentation.
+
+So basically that bottom line where all the : commands are written, you're inserting vimscript there.
+
+Try random stuff like: 
+\begin{itemize}
+    \item \begin{verbatim} :echo "hello world" \end{verbatim}
+    \item \begin{verbatim} :echom "hello world second time" \end{verbatim}
+    \item \begin{verbatim} To see all messages execute :messages \end{verbatim}
+    \item \begin{verbatim} " is considered to be a comment \end{verbatim}
+\end{itemize}
+
+\subsubsection{Boolean Options}
+
+Lot of random settings are boolean. If you read through everything you would've seen something called :set scrollbind.
+
+This was setting a boolean value within vim.
+
+Booleans in vim are weird.
+Generic form of accessing with some examples:
+\begin{itemize}
+    \item \begin{verbatim} :set <name> \end{verbatim}- Makes boolean value true 
+    \item \begin{verbatim} :set no<name> \end{verbatim}- Makes boolean value false 
+    \item try \begin{verbatim} :set number \end{verbatim} and \begin{verbatim} :set nonumber \end{verbatim}
+    \item \begin{verbatim} :set <name>! \end{verbatim}- Toggles boolean value 
+    \item \begin{verbatim} :set <name>? \end{verbatim}- Checks current state of boolean value 
+    \item \begin{verbatim} :set number numberwidth=4 \end{verbatim}- Can set multiple things at once 
+\end{itemize}
+
+While executing things in vim we use the :
+
+While adding these settings to your .vimrc file, the : can be omitted
+
+\textbf{Recommendation:} Add \textit{set relativenumber} to your vimrc. Let's you use motions much more easily. You'll be able to see where a motion like 3j or something would take you to.
+
+\subsection{Life Hacks}
+\subsubsection{Mapping Keys}
+
+Mapping keys in vim is ridiculously easy.
+$$:map - x$$
+This would map hyphen to delete a character (the command x).
+
+Mappings persist only in a vim session. To make them permanent you must add them to your .vimrc file (remove the : then)
+
+You can map special keys as well. Ex. <c-d> would be [ctrl d], or <space> corresponds to the spacebar (the angular brackets must be present)
+
+Given vim has multiple modes, you can create mode-specific mappings with :imap, :nmap, and :vmap ... corresponding to insert, normal, and visual modes. The usage is the same.
+
+
+*map functions may recurse, which is why they're not used. Can this recurse?
+\begin{verbatim}
+:nmap dd 0<esc>jddk
+\end{verbatim}
+
+
+To handle this issue we use noremap instead of map. Correspondingly, we have inoremap, nnoremap, and vnoremap. Noremap means no recursion map which prevents recursion from happening.
+
+
+While mapping stuff, you usually dont have to many keys. SO you prefix your mappings with something, so that you can use it everywhere. This prefix we call a leader
+
+\begin{verbatim}
+Set by  :let mapleader = ','
+Use by  :nnoremap <leader>d dd
+\end{verbatim}
+
+There is also another leader in vim called localleader.
+works the same way as leader, just replace with localleader
+It's mainly used to mappings that take effect in only some types of files. Basically leader takes precedence over localleader, which is why localleader is often used while writing plugins.
+
+
+Life hacks to quickly edit your vimrc from within vim:
+
+\begin{verbatim}
+Open up vimrc - 
+:nnoremap <leader>ev :vsplit \$MYVIMRC<cr>
+
+Source vimrc - 
+:nnoremap <leader>sv :source \$MYVIMRC<cr>
+\end{verbatim}
+
+Note: <cr> is used as carriage return. It's basically the equivalent of your enter/return key, in command form
+
+To learn a new mapping that you've created you can noremap your old mapping to <nop>  forcing you to use the new mapping
+
+\subsubsection{Autocommands}
+These are things which wait for an event and then execute something automatically. 
+
+The following would indent before reading or before writing to a html file: 
+\begin{verbatim}
+:autocmd BufWritePre,BufRead *.html :normal gg=G
+\end{verbatim}
+
+Filetypes can also be events:
+\begin{verbatim}
+:autocmd FileType python nnoremap <buffer> <localleader>c I\#<esc>
+\end{verbatim}
+
+This complicated piece of code...all it does is that if the file type is python, it creates a mapping to <localleader>c which goes to the start of the line by I, types \#, and then Esc back to normal mode...essentially a oneliner to create a commenting plugin. Will bring back this example when we see how useless most plugins are
+
+
+To prevent repeated execution of your autocmds, you should insert it into your vimrc like this:
+\begin{verbatim}
+augroup filetype_html
+    autocmd!
+    autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+augroup END
+\end{verbatim}
+
+\subsubsection{New Operators}
+The naming of these differs slightly from what we've used to far, but bear with me. Operators are essentially our text objects
+
+The command :onoremap is the way to define operators
+Try:
+\begin{verbatim}
+:onoremap p i\{
+:onoremap b /subsection<cr>
+:onoremap in( :<c-u>normal! f(vi(<cr>
+\end{verbatim}
+The first one makes an operator with key p. Try cp to delete things that correspond to inner \{
+
+The second defines b as the forward search for subsection
+
+Try figuring out what the last does. The normal! is a way of executing normal mode commands from vimscript
+
+If we wanted to create a way to select markdown headings, a new object for that..use:
+\begin{verbatim}
+:onoremap ih :<c-u>execute "normal! ?^==\\+\$\r:nohlsearch\rkvg_"<cr>
+\end{verbatim}
+
+:normal takes a set of commands and performs action as if typed in normal mode
+
+we use :execute for strings wihch contain <cr> and other special characters which a command like normal! would not recognize
+
+Bit of more advanced vimscript..don't really worry too much about it. Just basically know that creating these text objects isn't very hard..just a combination of regex and motions
+
+\subsection{Plugin-less Random Suggestions}
+
+\subsubsection{ctags}
+Install ctags on your shell
+
+Add this to your .vimrc file:
+\begin{verbatim}
+command! MakeTags !ctags -R .
+\end{verbatim}
+
+If you want support in python add this to \char`\~/.ctags (This will get you started, but can put this in local directories as well for more nuanced support)
+\begin{verbatim}
+--python-kinds=-i 
+\end{verbatim}
+
+Now when you open a project directory in vim, just execute MakeTags in vim.
+
+After that you can use:
+\begin{table}[H]
+    \begin{tabular}{|c|l|}
+        Command & Description \\
+        \hline
+        ctrl ] & Navigate to definition of function across files \\
+        \hline
+        ctrl t & go back along tag stack \\
+        \hline
+        g ctrl ] & if ambgious tag that you need to jump to \\
+        \hline
+    \end{tabular}
+\end{table}
+
+This will save you tremendous amounts of time. Ctags support is inbuilt with vim, just may not be so with your shell, thus the installation.
+
+\subsubsection{Autocomplete}
+You'll find a ton of autocomplete options and plugins. Just know that vim does come with an out of the box autocomplete as well, though it is not a semantic completion engine. (Maybe use YCM or something for that?).
+
+However don't both installing anything that is not semantic autocomplete as you could just remap the default commands to your preferred keys and have it work just out of the box.
+\begin{table}[H]
+    \begin{tabular}{|c|l|}
+        Command & Description \\
+        \hline
+        ctrl x ctrl n & autocomplete within current file (do it while typing) \\
+        \hline
+        ctrl x ctrl f & file name autocomplete \\
+        \hline
+        ctrl n, ctrl p & go up or down through suggestions \\
+        \hline
+        ctrl x ctrl ] & ctags based autocomplete across files \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{Snippets}
+Another cool hack is the :abbrev command, or iabbrev
+\begin{verbatim}
+:iabbrev waht what
+\end{verbatim}
+    Type something like waht and then press tab (or it may work directly sometimes...occasionally there are plugin clashes with this feature), and it'll replace it.
+    Intuitively a collection of these could easily be used to create code snippets without any plugins
+
+
+Another way to go about creating snippets is something like:
+\begin{verbatim}
+nnoremap <Leader>html :-1read $HOME/.vim_templates/html_template<CR>3jwf>a
+\end{verbatim}
+All this does is when I type my leader, followed by html in rapid succession, it'll go and read from that file linked, after which it will go 3 lines down, one word over, go til the end of the angular bracket, and go to insert mode at that location.
+
+It's that simple. Add any file and manage your own snippets easily like this. Create some kind of directory of your own templates, and you have full configuration capabilities on top of this. Easy huh?
+
+\subsubsection{File Exploring}
+Vim's native file browser can be invoked by
+\begin{verbatim}
+:ex
+:sex
+\end{verbatim}
+
+The second one splits the screen and opens the file explorer while the first opens up in the current buffer.
+
+Plugins like nerdtree and others are quite useless given that they are essentially wrappers around the default explorer, and just a few minor settings can get it to look almost the same (go look online for the config).
+
+Here's a clean config getting rid of some banners and all:
+\begin{verbatim}
+let g:netrew_banner=0
+let g:netrew_browse_split=4
+let g:netrew_altv=1
+let g:netrew_lifestyle=3
+let g:netrew_list_hide=netrw_gitignore#Hide()
+let g:netrew_list_hide=',\(^|\s\s\)\zs\.\S\+'
+\end{verbatim}
+
+Files can be really easily opened in vim.
+If you have some valid path written ex. ~/test, try putting your cursor above it and typing gf.
+
+Remember buffers and :ls to get yourself back out.
+
+\subsubsection{Plugins}
+Try to reduce your use of plugins as much as possible. Hopefully throughout this document you've seen that it's quite trivial to create many of the "popular" plugins that are used. 
+
+Still, there are many plugins which do add quite a bit of value so don't discard all of them.
+
+Check out: 
+\begin{itemize}
+    \item repeat.vim(\url{https://github.com/tpope/vim-repeat}) which adds the repeat command to many larger commands.
+    \item surround vim \url{https://github.com/tpope/vim-surround}. This lets you do stuff like delete surrounding quotes with ds", change type of quotes with cs"', add single quotes around a particular word with ysiw", change surrounding tag in html with csit...etc.
+    \item Some commenting plugins are nice, look for the most lightweight ones. Native way to comment would be to visual block, I, comment, Esc.
+    \item look for good plugin managers as well like Vundle, Pathogen..etc.
+\end{itemize}
+
+
+Plugins, inevitably, people will figure out. So won't be adding too much to this.
+
+
+\subsubsection{Random}
+Find and Replace over the whole file
+\begin{verbatim}
+%s/target/new/
+\end{verbatim}
+
+You can use any visual mode to select some text and then execute find and replace only within that by
+\begin{verbatim}
+s/target/new/
+\end{verbatim}
+This will replace the first occurence of the target on each line. There's more nuanced ways which you can look up, but if you want to replace all occurences just change it to
+\begin{verbatim}
+s/target/new/g
+\end{verbatim}
+
+As seen in the snippet section, you can read directly from another file into your current file. Try:
+\begin{verbatim}
+:read filename
+\end{verbatim}
+
+I very commonly like to see what I'm selecting, so often before I select some lines, I'll go into visual line mode (V), then I use motions like 3j, 5k or something to select the lines I want to, and then use d or something to delete or apply some other operation.
+
+
+Can find pressing Esc to be quite tiresome so I suggest a remap to jk, an uncommon set of keys typed, essentially 
+
+\begin{verbatim}
+inoremap jk <c-c>`^
+inoremap kj <c-c>`^
+\end{verbatim}
+
+
+
+\section{Thanks}
+Thanks for reading! Anyway this concludes the document. Hope you learned something useful :)
+
+Will have this up on github, so please feel free to contribute and add more details. Aim of this was to keep it simple but explore the power of vim.
+\end{document}
+
