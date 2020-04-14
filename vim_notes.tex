@@ -790,26 +790,32 @@ Check out:
 Plugins, inevitably, people will figure out. So won't be adding too much to this.
 
 
-\subsubsection{Random}
-Find and Replace over the whole file
+\section{Random}
+\subsection{Randomly useful stuff}
+
+\subsubsection{Find and Replace}
+To find and replace over a whole file:
 \begin{verbatim}
 %s/target/new/
 \end{verbatim}
 
-You can use any visual mode to select some text and then execute find and replace only within that by
+You can use any visual mode to select some text and then execute find and replace only within that by:
 \begin{verbatim}
 s/target/new/
 \end{verbatim}
-This will replace the first occurence of the target on each line. There's more nuanced ways which you can look up, but if you want to replace all occurences just change it to
+This will replace the first occurence of the target on each line. There's more nuanced ways which you can look up, but if you want to replace all occurences just change it to:
 \begin{verbatim}
 s/target/new/g
 \end{verbatim}
 
+\subsubsection{Reading from files}
 As seen in the snippet section, you can read directly from another file into your current file. Try:
 \begin{verbatim}
 :read filename
 \end{verbatim}
 
+
+\subsubsection{Personal Suggestions}
 I very commonly like to see what I'm selecting, so often before I select some lines, I'll go into visual line mode (V), then I use motions like 3j, 5k or something to select the lines I want to, and then use d or something to delete or apply some other operation.
 
 
