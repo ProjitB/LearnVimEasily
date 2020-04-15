@@ -38,3 +38,11 @@ The notes include:
         - Reading from Files
         - Personal Suggestions
 - Acknowledgements and Sources
+
+
+
+# TODO:
+- Marks
+- Recording
+- Registers
+
