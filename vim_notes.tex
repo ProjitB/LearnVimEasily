@@ -70,6 +70,7 @@ Little more on Visual:
         v & enter visual mode, then can move around with navigation. \\
         V & enter visual line mode, then can move around up and down \\
         Ctrl V& enter visual block mode, can move around with navigation \\
+        gv & select the last selected block again \\
     \end{tabular}
 \end{table}
 
@@ -834,6 +835,8 @@ After that you can use:
         \hline
         g ctrl ] & if ambgious tag that you need to jump to \\
         \hline
+        g ] & Find all occurences of keyword \\
+        \hline
     \end{tabular}
 \end{table}
 
@@ -984,6 +987,59 @@ Use zM to fold everything in the file. Open all folds with zR
 
 Toggle current fold using za
 
+\subsubsection{Far Editing}
+Decrement / Increment next number on same line with 
+\begin{verbatim}
+ctrl A
+ctrl X
+\end{verbatim}
+Try this on a line with a number (like this [1])
+
+\subsubsection{Marks}
+Setting and using marks makes it a lot easier to jump back to important
+positions in a file
+\begin{verbatim}
+ctrl A
+ctrl X
+\end{verbatim}
+Try this on a line with a number (like this [1])
+
+\subsubsection{Command History}
+Check out the commands you've just run using
+\begin{verbatim}
+q:
+\end{verbatim}
+Run some command on a section. Type the above thing. You can move to the point
+within it and run it by pressing enter on it
+
+
+\subsubsection{Regex Commands}
+Also known as Ex Commands, these can be run on a wide range of objects
+\begin{verbatim}
+:g/regex/ex
+\end{verbatim}
+This command runs the vim command ex on every line that matches regex.
+To negate (run on every line that \textit{doesn't} match), replace g with v.
+\begin{verbatim}
+:v/regex/ex
+\end{verbatim}
+
+The norm command lets you run commands over a textobject (ex. visual selection)
+\begin{verbatim}
+:norm I#
+\end{verbatim}
+If applied on multiple lines, this will execute I, which is go to insert mode
+at the start of the line, followed by typing a \#. Essentially you have python
+commented many lines!
+
+
+Combining this with the regex command from above you can do cool things like
+\begin{verbatim}
+g/regex/norm f dw 
+\end{verbatim}
+This would execute a deletion of the first word after a space on every line that matches
+
+
 \subsubsection{Personal Suggestions}
 I very commonly like to see what I'm selecting, so often before I select some
 lines, I'll go into visual line mode (V), then I use motions like 3j, 5k or
@@ -1018,6 +1074,6 @@ this list as much as possible.
     \item
         \url{https://www.youtube.com/watch?time_continue=1&v=wlR5gYd6um0&feature=emb_logo}
     \item \url{https://vim.fandom.com/wiki/Vim_Tips_Wiki}
+    \item \url{https://www.hillelwayne.com/post/intermediate-vim/}
 \end{itemize}
 \end{document}
-
