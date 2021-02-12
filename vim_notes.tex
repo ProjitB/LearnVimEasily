@@ -953,20 +953,35 @@ this.
 \subsubsection{Find and Replace}
 To find and replace over a whole file:
 \begin{verbatim}
-%s/target/new/
+:%s/target/new/
 \end{verbatim}
 
 You can use any visual mode to select some text and then execute find and
 replace only within that by:
 \begin{verbatim}
-s/target/new/
+:s/target/new/
 \end{verbatim}
 This will replace the first occurence of the target on each line. There's more
 nuanced ways which you can look up, but if you want to replace all occurences
 just change it to:
 \begin{verbatim}
-s/target/new/g
+:s/target/new/g
 \end{verbatim}
+
+
+Some lesser known things:
+Lets say you want to find and replace on just your current line. (g makes it to
+it for all occurences)
+\begin{verbatim}
+:.s/target/new/g
+\end{verbatim}
+and whoops you did your find replace. but then you need to do it again.
+\begin{verbatim}
+:&
+\end{verbatim}
+
+To add confirmation to any of these, add a c at the end.
+
 
 \subsubsection{Reading from files}
 As seen in the snippet section, you can read directly from another file into
