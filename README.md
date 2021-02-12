@@ -1,4 +1,5 @@
 ## Vim Notes Start to End
+Website version at: [Link](https://projitb.github.io/vim/vim_notes.html)
 
 I've tried to create these notes, making it a one-stop-shop for all vim needs, from quick commands to the philosophy behind the text editor. Many of the things which I found to be awesome in vim, are somehow not part of most of the popular tutorials, which I feel is a large reason for which many people are averse to using the editor. 
 
